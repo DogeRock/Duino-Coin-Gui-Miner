@@ -3,7 +3,9 @@
 from tkinter import * # note that module name has changed from Tkinter in Python 2 to tkinter in Python 3
 from tkinter import messagebox
 top = Tk()
+top.configure(background="grey")
 top.geometry("500x500")
+top.title("DogeRock Duino-Coin Miner")
 L1 = Label(top, text = "User Name")
 L1.place(x = 1,y = 200)
 L2 = Label(top, text = "Password")
@@ -11,15 +13,14 @@ L2.place(x = 1,y = 250)
 E1 = Entry(top, bd = 5)
 E1.place(x = 200,y = 200)
 E2 = Entry(top, bd = 5)
-E2.config(show="*");
+E2.config(show="●");
 E2.place(x = 200,y = 250)
+
 def helloCallBack():
    import socket, hashlib, os, urllib.request # Only python3 included libraries
    soc = socket.socket()
    username = E1.get()
    password = E2.get()
-   print("Closing gui to improve mining speed")
-   top.destroy()
    # This sections grabs pool adress and port from Duino-Coin GitHub file
    serverip = "https://raw.githubusercontent.com/revoxhere/duino-coin/gh-pages/serverip.txt" 
    with urllib.request.urlopen(serverip) as content:
@@ -35,7 +36,7 @@ def helloCallBack():
    soc.send(bytes("LOGI," + username + "," + password, encoding="utf8")) # Send login data
    response = soc.recv(2).decode() # Get server feedback about logging in                
    if response == "OK":
-       print("Loged in")
+       print("Logged in")
    else:
        print("Error loging in - check account credentials!")
        soc.close()
@@ -59,7 +60,6 @@ def helloCallBack():
                elif feedback == "BAD": # If result was bad
                    print("Rejected share", result, "Difficulty", difficulty)
                    break
-
 
 B = Button(top, text = "Mine", command = helloCallBack)
 B.place(x = 200,y = 350)
