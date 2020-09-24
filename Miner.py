@@ -13,7 +13,7 @@ L2.place(x = 1,y = 250)
 E1 = Entry(top, bd = 5)
 E1.place(x = 200,y = 200)
 E2 = Entry(top, bd = 5)
-E2.config(show="●");
+E2.config(show="•");
 E2.place(x = 200,y = 250)
 
 def helloCallBack():
