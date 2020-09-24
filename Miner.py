@@ -3,7 +3,7 @@
 from tkinter import * # note that module name has changed from Tkinter in Python 2 to tkinter in Python 3
 from tkinter import messagebox
 top = Tk()
-top.configure(background="grey")
+top.configure(background="#7d796e")
 top.geometry("500x500")
 top.title("DogeRock Duino-Coin Miner")
 L1 = Label(top, text = "User Name")
